@@ -1,0 +1,26 @@
+{
+  "name": "rocketflix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon index.js localhost 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonathanPR0/rocketflix.git"
+  },
+  "keywords": [],
+  "author": "Jonathan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonathanPR0/rocketflix/issues"
+  },
+  "homepage": "https://github.com/JonathanPR0/rocketflix#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "nodemon": "^2.0.15"
+  }
+}

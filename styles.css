@@ -30,14 +30,14 @@ header img {
   margin-bottom: 10px;
 }
 main {
-  display: none;
+  display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
 main img.cover {
   background: #102d71;
-  min-height: 243.77px;
-  min-width: 170px;
+  height: 243.77px;
+  width: 170px;
   margin-right: 2rem;
 }
 main div.infoMovie h2 {
@@ -76,4 +76,25 @@ section#find p.info {
   margin-top: 25px;
   text-align: center;
   font-size: 0.8rem;
+}
+
+@media (max-width: 680px) {
+  body {
+    padding: 50px 30px;
+  }
+  main {
+    flex-direction: column;
+    align-items: center;
+  }
+  main img.cover {
+    margin: 0 auto;
+  }
+  main div.infoMovie h2 {
+    margin: 20px auto;
+    text-align: center;
+  }
+  main div.infoMovie p {
+    width: 100%;
+    text-align: center;
+  }
 }
