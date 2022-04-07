@@ -1,31 +1,36 @@
-const express = require('express');
-const exphbs = require('express-handlebars');
-const api = require('./api');
+const API_KEY = 'api_key=dc52dfb3a5d024598324ffeb22085003';
+const BASE_URL = 'https://api.themoviedb.org/3';
+const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+const MOVIES = '/discover/movie?sort_by=popularity.desc&';
+const language = '&language=pt-BR';
+const baseURL = `${BASE_URL}${MOVIES}${API_KEY}${language}`;
 
-const app = express();
-const hbs = exphbs.create({
-  partialsDir: 'views/partials',
-});
+const btn = document.querySelector('#find');
+const main = document.querySelector('#movie');
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-app.use(express.static('public'));
-
-app.get('/', async (req, res) => {
-  try {
-    const IMG_URL = 'https://image.tmdb.org/t/p/w500';
-    const { data } = await api.get();
-
-    // Criar função ao clicar no botão
-
-    const { title, overview, poster_path } = data.results[0];
-    const img_url = IMG_URL + poster_path;
-    res.render('movie', { title, overview, img_url });
-  } catch (err) {
-    console.error(err);
-  }
-});
-
-app.listen('3000', () => {
-  console.log('Porta 3000 funcionando...');
+const cover = document.querySelector('.cover');
+const title = document.querySelector('.movieName');
+const description = document.querySelector('.movieDescription');
+let id = 18;
+btn.addEventListener('click', async (event) => {
+  event.preventDefault();
+  await fetch(baseURL)
+    .then((response) => response.json())
+    .then((data) => {
+      const movieData = data.results[id];
+      console.log(movieData);
+      if (movieData) {
+        cover.src = IMG_URL + movieData.poster_path;
+        title.innerText = movieData.title;
+        description.innerText = movieData.overview;
+      } else {
+        cover.src = './assets/Poster.png';
+        title.innerText = `Ops, hoje não é dia de assistir filme.
+        Bora codar! 🚀`;
+        description.innerText = '';
+      }
+    });
+  main.style.animation;
+  main.style.display = 'flex';
+  id++;
 });
