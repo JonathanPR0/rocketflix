@@ -10,12 +10,17 @@
   box-sizing: border-box;
 }
 body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   min-height: 100vh;
-  height: 100%;
-  background: var(--background) no-repeat;
-  padding-top: 14vh;
+  padding: 3rem;
+
   font-family: 'Poppins', sans-serif;
   color: var(--title);
+  background: var(--background) no-repeat;
 }
 header,
 section#find {
@@ -29,30 +34,46 @@ header img {
   width: 5rem;
   margin-bottom: 10px;
 }
-main {
-  display: flex;
+main#movie {
+  display: none;
+  opacity: 0;
   justify-content: center;
-  margin-bottom: 30px;
+  align-items: center;
+  margin-bottom: 25px;
+
+  animation: show 0.8s linear forwards;
 }
-main img.cover {
+main#movie img.cover {
   background: #102d71;
-  height: 243.77px;
-  width: 170px;
+  max-height: 243.77px;
+  max-width: 170px;
   margin-right: 2rem;
 }
-main div.infoMovie h2 {
+main#movie div.infoMovie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+main#movie div.infoMovie h2 {
   font-size: 1.25rem;
 }
-main div.infoMovie p {
+main#movie div.infoMovie p {
   width: 30vw;
   font-size: 1em;
+  margin-top: 1em;
 }
 
 header h1 {
   font-size: 2.5rem;
   text-align: center;
 }
-section#find button {
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+footer a#find {
   display: flex;
   align-items: center;
 
@@ -66,34 +87,45 @@ section#find button {
   font-size: 0.75rem;
   font-weight: 700;
   color: #000000;
+  text-decoration: none;
 }
-section#find button img {
+footer a#find img {
   height: 100%;
   margin-right: 1.1rem;
 }
-section#find p.info {
+footer p.info {
   max-width: 380px;
   margin-top: 25px;
   text-align: center;
   font-size: 0.8rem;
 }
 
+@keyframes show {
+  to {
+    opacity: 1;
+  }
+  from {
+    opacity: 0;
+  }
+}
+
 @media (max-width: 680px) {
   body {
     padding: 50px 30px;
   }
-  main {
+  main#movie {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
-  main img.cover {
+  main#movie img.cover {
     margin: 0 auto;
   }
-  main div.infoMovie h2 {
+  main#movie div.infoMovie h2 {
     margin: 20px auto;
     text-align: center;
   }
-  main div.infoMovie p {
+  main#movie div.infoMovie p {
     width: 100%;
     text-align: center;
   }
