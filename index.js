@@ -11,7 +11,7 @@ const main = document.querySelector('#movie');
 const cover = document.querySelector('.cover');
 const title = document.querySelector('.movieName');
 const description = document.querySelector('.movieDescription');
-let id = 18;
+let id = 0;
 btn.addEventListener('click', async (event) => {
   event.preventDefault();
   await fetch(baseURL)
